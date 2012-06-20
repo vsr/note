@@ -1,0 +1,70 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    width: 85%;
+    color: #323333;
+    font-family: sans-serif;
+    background-color: #FEFFFF;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header .desc{
+    margin: 0;
+}
+
+.auth-section {
+    text-align: center;
+}
+
+.auth-list {
+    text-align: center;
+}
+
+.auth-list form{
+
+}
+
+.note-section .top .greeting{
+
+}
+.note-section .top .nav{
+    float: right;
+}
+
+.openid-data {
+    display: none;
+}
+.note-section{
+    max-width: 888px;
+    margin: 0 auto;
+}
+.note-section form textarea{
+    width: 100%;
+}
+
+.note-section form .save{
+    text-align: right;
+}
+
+footer {
+    text-align: right;
+}
+a {
+    color: #2D4598;
+    text-decoration: none;
+    border-bottom: 1px dotted #888;
+}
+a:hover {
+    color: #2958FE;
+}
+a:visited {
+    color: #6C7BB1;
+}

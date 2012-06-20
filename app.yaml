@@ -1,0 +1,27 @@
+application: note-appb-in
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: no
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /about
+  static_files: about.html
+  upload: about\.html
+
+- url: /static
+  static_dir: static
+
+- url: /_ah/login_required
+  script: do_openid_login.py
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.1"

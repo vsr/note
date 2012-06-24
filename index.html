@@ -1,40 +1,24 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>note.appb.in</title>
-        <meta name="description" content="your personal textual scractchpad.">
-        <link type="text/css" rel="stylesheet" href="/static/style.css" />
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <!--[if IE]><script>var e="footer,header,nav,section".split(',');var i=e.length;while(i--){document.createElement(e[i]);}</script><![endif]-->
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">note.appb.in</a></h1>
-            <p class="desc">(your personal scratchpad)</p>
-        </header>
-        {% if is_authenticated %}
-        <section class="note-section">
-            <p class="top"><span class="greeting">Hi {{ email }}!</span> <span class="nav"><a href="{{ logout_url }}">logout</a></span></p>
-            <form method="POST" name="note" accept-charset="utf-8">
-                <textarea name="text" rows="6">{{ text }}</textarea>
-                <p class="save"><input type="submit" value="save"></p>
-            </form>
-        </section>
-        {% else %}
-        <section class="auth-section">
-            <p>Login with your OpenId.</p>
-            <div class="auth-list">
-            <p>{% for url, name in login_urls %}
-                [<a href="{{ url }}">{{ name }}</a>]
-            {% endfor %}
-            </p>
-            OR <form action="/useropenid" method="GET"><label>OpenId<input placeholder="your openid" name="idprovider" type="text"></label><input value="Go" type="submit"></form>
-            </div>
-        </section>
-        {% endif %}
-        <footer>
-            <p><a href="/about">About</a> | More apps at <a href="http://appb.in">appb.in</a></p>
-        </footer>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    {% if is_authenticated %}
+    <section class="note-section">
+        <p class="top"><span class="greeting">Hi {{ email }}!</span> <span class="nav"><a href="{{ logout_url }}">logout</a></span></p>
+        <form method="POST" name="note" accept-charset="utf-8">
+            <textarea name="text" rows="6">{{ text }}</textarea>
+            <p class="note-meta">{{ last_modified }}</p>
+            <p class="save"><input type="submit" value="save"></p>
+        </form>
+    </section>
+    {% else %}
+    <section class="auth-section">
+        <p>Login with your OpenId.</p>
+        <div class="auth-list">
+        <p>{% for url, name in login_urls %}
+            [<a href="{{ url }}">{{ name }}</a>]
+        {% endfor %}
+        </p>
+        OR <form action="/useropenid" method="GET"><label>OpenId<input placeholder="your openid" name="idprovider" type="text"></label><input value="Go" type="submit"></form>
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}

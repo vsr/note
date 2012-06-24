@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>note.appb.in</title>
+        <meta name="description" content="your personal textual scractchpad.">
+        <link type="text/css" rel="stylesheet" href="/static/style.css" />
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <!--[if IE]><script>var e="footer,header,nav,section".split(',');var i=e.length;while(i--){document.createElement(e[i]);}</script><![endif]-->
+    </head>
+    <body>
+        {% block header %}
+        <header>
+            <h1><a href="/">note.appb.in</a></h1>
+            <p class="desc">(your personal scratchpad)</p>
+        </header>
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+        {% block footer %}
+        <footer>
+            <p><a href="/about">About</a> | More apps at <a href="http://appb.in">appb.in</a></p>
+        </footer>
+        {% endblock %}
+    </body>
+</html>

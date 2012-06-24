@@ -68,6 +68,14 @@ class LoginHandler(webapp2.RequestHandler):
         self.response.location = login_url
 
 
+class AboutHandler(webapp2.RequestHandler):
+    """ For about page """
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'about.html')
+        self.response.out.write(template.render(path, {}))
+
+
 app = webapp2.WSGIApplication([('/', MainHandler),
-                               ('/useropenid', LoginHandler)],
+                               ('/useropenid', LoginHandler),
+                               ('/about', AboutHandler)],
                               debug=True)

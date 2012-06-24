@@ -25,10 +25,10 @@ class MainHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         if user:
             note = Note.get_or_insert(user.nickname(), text='')
-            text = note.text
             context.update({'is_authenticated': True, 'nickname': user.nickname(),
                 'federated_identity': user.federated_identity(), 'email': user.email(),
-                'text': text, 'logout_url': users.create_logout_url(self.request.uri)})
+                'text': note.text, 'last_modified': note.date,
+                'logout_url': users.create_logout_url(self.request.uri)})
         else:
             login_urls = []
             for name, uri in providers.items():
@@ -47,7 +47,9 @@ class MainHandler(webapp2.RequestHandler):
             note.text = text
             note.put()
             context.update({'is_authenticated': True, 'nickname': user.nickname(),
-                'text': text, 'logout_url': users.create_logout_url(self.request.uri)})
+                'federated_identity': user.federated_identity(), 'email': user.email(),
+                'text': text, 'last_modified': note.date,
+                'logout_url': users.create_logout_url(self.request.uri)})
 
         else:
             login_urls = []

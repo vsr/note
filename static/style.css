@@ -49,7 +49,10 @@ header .desc{
 .note-section form textarea{
     width: 100%;
 }
-
+.note-section .note-meta{
+    text-align: right;
+    font-size: 0.8em;
+}
 .note-section form .save{
     text-align: right;
 }

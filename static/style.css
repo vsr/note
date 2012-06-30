@@ -38,12 +38,16 @@ header .desc{
 
 }
 
-.note-section .top .greeting{
+.top .greeting{
 
 }
 
-.note-section .top .nav{
+.top .nav {
     float: right;
+}
+
+.nav a{
+    padding: 0 0.5em;
 }
 
 .openid-data {
@@ -76,6 +80,17 @@ header .desc{
 a.logout, a:visited.logout{
     font-size: 1.2em;
     color: red;
+}
+
+form {
+
+}
+
+.secretkey {
+    background-color: #eee;
+    font-size: 1.1em;
+    line-height: 2em;
+    font-family: monospace;
 }
 
 footer {

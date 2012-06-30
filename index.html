@@ -2,7 +2,13 @@
 {% block content %}
     {% if is_authenticated %}
     <section class="note-section">
-        <p class="top"><span class="greeting">Hi {{ email }}!</span> <span class="nav"><a class="logout" href="{{ logout_url }}">logout</a></span></p>
+        <p class="top">
+            <span class="greeting">Hi {{ email }}!</span>
+            <span class="nav">
+                <a class="settings" href="/settings">Settings</a>
+                <a class="logout" href="{{ logout_url }}">logout</a>
+            </span>
+        </p>
         <form method="POST" name="note" accept-charset="utf-8">
             <textarea name="text" rows="10">{{ text }}</textarea>
             <p class="note-meta">Last saved: {{ last_modified|timesince }} ago.</p>

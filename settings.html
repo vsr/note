@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if is_authenticated %}
+    <section class="settings-section">
+        <p class="top">
+            <span class="greeting">Hi {{ email }}!</span>
+            <span class="nav">
+                <a class="settings" href="/settings">Settings</a>
+                <a class="logout" href="{{ logout_url }}">logout</a>
+            </span>
+        </p>
+        <p>
+            <span>Secret Key: </span><span class="secretkey">{{ secret_key }}</span>
+            </br><span class="tip">You can read and update your note with this secret key using <a href="/about#api">API</a>.</span>
+        </p>
+        <form method="POST" class="reset-key">
+            <input name="keyoption" type="hidden" value="reset"> <input type="submit" value="Reset Secret Key">
+        </form>
+        <form method="POST" class="disable-key">
+            <input name="keyoption" type="hidden" value="disable"> <input type="submit" value="Disable Secret Key">
+        </form>
+    </section>
+    {% else %}
+    <section class="auth-section">
+        <p>Login with your OpenId.</p>
+        <div class="auth-list">
+        <p>{% for url, name in login_urls %}
+            [ <a href="{{ url }}">{{ name }}</a> ]&nbsp;&nbsp;
+        {% endfor %}
+        </p>
+        OR <form action="/useropenid" method="GET"><label>OpenId <input placeholder=" your openid" name="idprovider" type="text"></label><input value="Go" type="submit"></form>
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}

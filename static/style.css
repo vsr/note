@@ -82,8 +82,13 @@ a.logout, a:visited.logout{
     color: red;
 }
 
-form {
+.settings-section form {
+    display: inline;
+    padding: 0 1em;
+}
 
+.disable-key input{
+    color: #AD0707;
 }
 
 .secretkey {
@@ -111,4 +116,8 @@ a:hover {
 
 a:visited {
     color: #6C7BB1;
+}
+
+.tip {
+    font-size: 0.8em;
 }

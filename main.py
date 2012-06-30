@@ -28,8 +28,11 @@ class Note(db.Model):
     date = db.DateTimeProperty(auto_now=True)
     secret_key = db.StringProperty()
 
-    def reset_key(self):
-        self.secret_key = sha256(sha256(str(getrandbits(512))).hexdigest() + sha256(uuid4().hex).hexdigest()).hexdigest()
+    def reset_key(self, disable=False):
+        if disable:
+            self.secret_key = None
+        else:
+            self.secret_key = sha256(sha256(str(getrandbits(512))).hexdigest() + sha256(uuid4().hex).hexdigest()).hexdigest()
         self.put()
         return self.secret_key
 
@@ -104,9 +107,13 @@ class SettingsHandler(webapp2.RequestHandler):
 
     def post(self):
         user = users.get_current_user()
+        keyoption = self.request.get('keyoption')
         if user:
             note = Note.get_or_insert(user.nickname(), text='')
-            note.reset_key()
+            if keyoption == 'reset':
+                note.reset_key()
+            elif keyoption == 'disable':
+                note.reset_key(disable=True)
             self.response.status_int = 302
             self.response.location = '/settings'
         else:

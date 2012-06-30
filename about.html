@@ -14,4 +14,25 @@
                 If something is very important, please keep it saved someplace safe.</li>
         </ul>
     </section>
+    <section class="api">
+        <h1>HTTP API</h1>
+        <p>A note is uniquely identified by a resource url. A note can be read or updated by isusing a GET or PUT request to this resource url. API responses are in json format.</p>
+        <p>Resource URL: <pre>{{ host_url }}/api/note/&lt;secretkey&gt;</pre></p>
+        <h2>Reading</h2>
+        <p>Request: <pre>GET {{ host_url }}/api/note/&lt;secretkey&gt;</pre></p>
+        <p>Response: <pre>{"text": "your note", "last_modified": 1341066212}</pre>
+            where <code>last_modified</code> is unix timestamp.
+        </p>
+        <p>Example:
+            <pre>curl -XGET {{ host_url }}/api/note/&lt;secretkey&gt;</pre>
+        </p>
+        <h2>Updating</h2>
+        <p>Request: <pre>PUT {{ host_url }}/api/note/&lt;secretkey&gt;</pre>
+            Form encoded data: <code>text</code>
+        </p>
+        <p>Response: HTTP status 204.</p>
+        <p>Example:
+            <pre>curl -XPUT --data "text=asd" {{ host_url }}/api/note/&lt;secretkey&gt;</pre>
+        </p>
+    </section>
 {% endblock %}

@@ -15,6 +15,5 @@ links, tasks, grocery lists, phone numbers, email ids and whatever you can think
 
 
 ## TODO 
-* Secret key based API supporting GET and PUT requests
 
 
